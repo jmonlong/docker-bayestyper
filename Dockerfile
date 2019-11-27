@@ -23,9 +23,8 @@ RUN wget --no-check-certificate https://github.com/refresh-bio/KMC/releases/down
         && mv kmc_tools /bin/ && chmod +x /bin/kmc_tools \
         && rm KMC3.1.1.linux.tar.gz
 
-ADD bayesTyper /bin/
-
-ADD bayesTyperTools /bin/
-
-RUN chmod +x /bin/bayesTyper \
-        && chmod +x /bin/bayesTyperTools
+RUN wget --no-check-certificate https://github.com/bioinformatics-centre/BayesTyper/releases/download/v1.5/bayesTyper_v1.5_linux_x86_64.tar.gz \
+        && tar xzf bayesTyper_v1.5_linux_x86_64.tar.gz \
+        && mv bayesTyper_v1.5_linux_x86_64/bin/bayesTyper /bin/ && chmod +x /bin/bayesTyper \
+        && mv bayesTyper_v1.5_linux_x86_64/bin/bayesTyperTools /bin/ && chmod +x /bin/bayesTyperTools \
+        && rm -r bayesTyper_v1.5_linux_x86_64 bayesTyper_v1.5_linux_x86_64.tar.gz
